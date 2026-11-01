@@ -1,239 +1,112 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#100c20">
-<link rel="manifest" href="./manifest.json">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>KIRUU PAY</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#100c20;color:white;min-height:100vh}
-button,input{font:inherit}
-button{cursor:pointer}
-.screen{display:none;min-height:100vh;padding:25px 22px}
-.screen.active{display:flex;flex-direction:column}
-.brand{text-align:center;margin:45px 0 35px}
-.logo{font-size:34px;font-weight:900;letter-spacing:2px}
-.logo span{color:#a78bfa}
-.tag{color:#aaa;font-size:12px;letter-spacing:3px;margin-top:9px}
-.symbol{width:90px;height:90px;border-radius:28px;margin:0 auto 20px;background:linear-gradient(135deg,#965aff,#48218e);display:grid;place-items:center;font-size:48px;font-weight:900;box-shadow:0 0 40px #813dff55}
-.heading{font-size:28px;font-weight:800;margin-bottom:10px}
-.sub{color:#aaa;font-size:14px;line-height:1.6;margin-bottom:30px}
-.panel{background:#1c1630;border:1px solid #382951;border-radius:24px;padding:23px}
-.label{display:block;font-size:12px;color:#c4b5fd;margin:18px 0 9px}
-.input{width:100%;background:#100c20;border:1px solid #493765;border-radius:13px;padding:16px;color:white;outline:none}
-.input:focus{border-color:#a78bfa}
-.primary{width:100%;padding:16px;border:0;border-radius:14px;background:linear-gradient(100deg,#8648ee,#5927bd);color:white;font-weight:800;margin-top:23px}
-.secondary{width:100%;padding:15px;border:1px solid #59417b;border-radius:14px;background:transparent;color:white;margin-top:12px}
-.link{color:#bd9cff;text-align:center;font-size:13px;margin-top:22px;cursor:pointer}
-.note{font-size:11px;color:#888;text-align:center;line-height:1.5;margin-top:22px}
-.top{display:flex;justify-content:space-between;align-items:center;margin:10px 0 35px}
-.back{background:#251b3b;border:0;color:white;padding:12px 16px;border-radius:12px}
-.error{font-size:12px;color:#ff8585;margin-top:12px;min-height:16px}
-.pinrow{display:flex;justify-content:center;gap:13px;margin:30px 0}
-.pinrow input{width:53px;height:58px;text-align:center;font-size:25px;background:#100c20;border:1px solid #59417b;border-radius:14px;color:white}
-.dashboard{padding:22px}
-.dashhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
-.avatar{background:#33234e;border-radius:50%;padding:13px}
-.balance{padding:25px;background:linear-gradient(135deg,#7541d5,#38206c);border-radius:23px}
-.balance small{color:#ddd}
-.balance h1{font-size:34px;margin:14px 0}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
-.action{text-align:center;font-size:11px;color:#ddd}
-.action i{font-style:normal;width:55px;height:55px;margin:0 auto 9px;display:grid;place-items:center;background:#251b3b;border:1px solid #49366b;border-radius:18px;font-size:24px}
-.dashsection{margin-top:30px}
-.dashsection h3{margin-bottom:16px}
-.rowitem{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid #302641;font-size:13px}
-.muted{color:#999;font-size:11px;margin-top:5px}
+*{box-sizing:border-box}
+body{
+ margin:0;padding:20px;min-height:100vh;
+ background:linear-gradient(145deg,#090613,#1b1035);
+ color:white;font-family:Arial,sans-serif
+}
+.container{max-width:450px;margin:auto}
+.header{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:bold;color:#c9a5ff}
+.profile-link{color:#d5b8ff;text-decoration:none}
+.welcome{margin-top:35px}
+.muted{color:#aa9bbd;font-size:13px}
+.balance{
+ margin-top:20px;padding:24px;border-radius:20px;
+ background:linear-gradient(135deg,#7126bd,#3d1976);
+ box-shadow:0 12px 35px #0007
+}
+.balance small{color:#e2d0fa}
+.amount{font-size:34px;font-weight:bold;margin-top:10px}
+.badge{font-size:10px;margin-top:10px;color:#f0dfff}
+h3{margin-top:30px}
+.grid{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:13px
+}
+.tile{
+ display:block;text-align:center;padding:20px 10px;
+ background:#1b142b;border:1px solid #49336b;
+ border-radius:16px;color:white;text-decoration:none
+}
+.tile .emoji{font-size:27px}
+.tile div:last-child{font-size:13px;margin-top:10px}
+.list{
+ display:block;margin-top:12px;padding:17px;
+ background:#1b142b;border:1px solid #49336b;
+ border-radius:13px;color:white;text-decoration:none
+}
+.note{
+ margin-top:22px;padding:13px;border-radius:12px;
+ background:#2b203c;color:#c9b8df;
+ font-size:11px;line-height:1.6;text-align:center
+}
 </style>
 </head>
 <body>
+<div class="container">
 
-<!-- WELCOME -->
-<section id="welcome" class="screen active">
- <div class="brand">
-  <div class="symbol">K</div>
-  <div class="logo">KIRUU <span>PAY</span></div>
-  <div class="tag">FAST • SECURE • SMART</div>
+ <div class="header">
+  <div class="logo">👑 KIRUU PAY</div>
+  <a class="profile-link" href="profile.html">My Profile ↗</a>
  </div>
- <div style="margin-top:auto">
-  <div class="heading">Payments made simple.</div>
-  <div class="sub">Welcome to a fresh and simple payment experience.</div>
-  <button class="primary" onclick="show('login')">Get Started →</button>
-  <button class="secondary" onclick="show('signup')">Create New Account</button>
-  <div class="note">DEMO APPLICATION · NO REAL PAYMENTS</div>
- </div>
-</section>
 
-<!-- LOGIN -->
-<section id="login" class="screen">
- <div class="top"><button class="back" onclick="show('welcome')">← Back</button><b>KIRUU PAY</b></div>
- <div class="heading">Welcome Back 👋</div>
- <div class="sub">Login to your KIRUU PAY demo account.</div>
- <div class="panel">
-  <label class="label">MOBILE NUMBER</label>
-  <input id="loginMobile" class="input" type="tel" inputmode="numeric" maxlength="10" placeholder="Enter 10 digit number">
-  <div id="loginError" class="error"></div>
-  <button class="primary" onclick="continueLogin()">Continue →</button>
+ <div class="welcome">
+  <div class="muted">WELCOME BACK</div>
+  <h2 id="username">KIRUU PAY USER</h2>
  </div>
- <div class="link" onclick="show('signup')">New here? Create an account</div>
- <div class="note">Demo only. Do not enter your bank PIN or OTP.</div>
-</section>
 
-<!-- SIGNUP -->
-<section id="signup" class="screen">
- <div class="top"><button class="back" onclick="show('welcome')">← Back</button><b>KIRUU PAY</b></div>
- <div class="heading">Create Account ✨</div>
- <div class="sub">Set up your demo profile.</div>
- <div class="panel">
-  <label class="label">YOUR NAME</label>
-  <input id="newName" class="input" maxlength="35" placeholder="Enter your name">
-  <label class="label">MOBILE NUMBER</label>
-  <input id="newMobile" class="input" type="tel" inputmode="numeric" maxlength="10" placeholder="10 digit mobile number">
-  <div id="signupError" class="error"></div>
-  <button class="primary" onclick="createAccount()">Create Demo Account →</button>
- </div>
- <div class="link" onclick="show('login')">Already have an account? Login</div>
- <div class="note">This demo does not create a real financial account.</div>
-</section>
-
-<!-- DEMO PIN -->
-<section id="pin" class="screen">
- <div class="top"><button class="back" onclick="show('login')">← Back</button><b>KIRUU PAY</b></div>
- <div class="heading">Enter Demo PIN</div>
- <div class="sub">Enter the demo PIN to open your dashboard.</div>
- <div class="panel">
-  <div class="pinrow">
-   <input id="p1" maxlength="1" inputmode="numeric">
-   <input id="p2" maxlength="1" inputmode="numeric">
-   <input id="p3" maxlength="1" inputmode="numeric">
-   <input id="p4" maxlength="1" inputmode="numeric">
-  </div>
-  <div id="pinError" class="error"></div>
-  <button class="primary" onclick="checkPin()">Unlock Demo App</button>
-  <div class="note">Demo PIN: 1234</div>
- </div>
- <div class="link" onclick="show('login')">Use another mobile number</div>
-</section>
-
-<!-- DASHBOARD -->
-<section id="dashboard" class="screen dashboard">
- <div class="dashhead">
-  <div>
-   <div class="logo" style="font-size:23px">KIRUU <span>PAY</span></div>
-   <div class="muted">Hello, <span id="userName">User</span> 👋</div>
-  </div>
-  <div class="avatar">👤</div>
- </div>
  <div class="balance">
-  <small>DEMO BALANCE</small>
-  <h1>₹10,000.00</h1>
-  <small>Not real money</small>
+  <small>Demo Wallet Balance</small>
+  <div class="amount">₹10,000.00</div>
+  <div class="badge">DEMO BALANCE • NOT REAL MONEY</div>
  </div>
- <div class="dashsection">
-  <h3>Money Transfers</h3>
-  <div class="grid">
-   <div class="action" onclick="demo('Scan QR')"><i>▦</i>Scan QR</div>
-   <div class="action" onclick="demo('To Mobile')"><i>📱</i>To Mobile</div>
-   <div class="action" onclick="demo('To Bank')"><i>🏦</i>To Bank</div>
-   <div class="action" onclick="demo('Self Transfer')"><i>↔️</i>Self Transfer</div>
-  </div>
+
+ <h3>Quick Actions</h3>
+
+ <div class="grid">
+  <a class="tile" href="qr.html">
+   <div class="emoji">▦</div>
+   <div>Scan QR</div>
+  </a>
+
+  <a class="tile" href="history.html">
+   <div class="emoji">↔</div>
+   <div>History</div>
+  </a>
+
+  <a class="tile" href="profile.html">
+   <div class="emoji">👤</div>
+   <div>Profile</div>
+  </a>
+
+  <a class="tile" href="settings.html">
+   <div class="emoji">⚙️</div>
+   <div>Settings</div>
+  </a>
  </div>
- <div class="dashsection">
-  <h3>Recharge & Bills</h3>
-  <div class="grid">
-   <div class="action" onclick="demo('Mobile Recharge')"><i>📲</i>Mobile</div>
-   <div class="action" onclick="demo('Electricity')"><i>💡</i>Electricity</div>
-   <div class="action" onclick="demo('DTH')"><i>📺</i>DTH</div>
-   <div class="action" onclick="demo('More')"><i>＋</i>More</div>
-  </div>
+
+ <h3>More</h3>
+ <a class="list" href="history.html">Transaction History →</a>
+ <a class="list" href="settings.html">App Settings →</a>
+ <a class="list" href="profile.html">My Account →</a>
+
+ <div class="note">
+  KIRUU PAY — DEMO APPLICATION<br>
+  Wallet balance and activity are sample data only.
+  No real UPI or bank transactions are performed.
  </div>
- <div class="dashsection">
-  <h3>Recent Activity</h3>
-  <div class="rowitem"><div>☕ Coffee Shop<div class="muted">Demo transaction</div></div><b>− ₹120</b></div>
-  <div class="rowitem"><div>💰 Money Received<div class="muted">Demo transaction</div></div><b style="color:#55e5a0">+ ₹500</b></div>
- </div>
- <button class="secondary" onclick="logout()">Log Out</button>
- <div class="note">KIRUU PAY DEMO · No real bank connection</div>
-</section>
+
+</div>
 
 <script>
-function show(id){
- document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
- document.getElementById(id).classList.add("active");
- window.scrollTo(0,0);
-}
-let currentName="User";
-let currentMobile="";
-
-function continueLogin(){
- const m=document.getElementById("loginMobile").value.trim();
- if(!/^[0-9]{10}$/.test(m)){
-  document.getElementById("loginError").textContent="Enter a valid 10 digit demo number.";
-  return;
- }
- currentMobile=m;
- currentName="User";
- clearPin();
- show("pin");
-}
-
-function createAccount(){
- const n=document.getElementById("newName").value.trim();
- const m=document.getElementById("newMobile").value.trim();
- const e=document.getElementById("signupError");
- if(n.length<2){e.textContent="Please enter your name.";return;}
- if(!/^[0-9]{10}$/.test(m)){e.textContent="Enter a valid 10 digit demo number.";return;}
- currentName=n;
- currentMobile=m;
- clearPin();
- show("pin");
-}
-
-function clearPin(){
- ["p1","p2","p3","p4"].forEach(id=>document.getElementById(id).value="");
- document.getElementById("pinError").textContent="";
-}
-
-function checkPin(){
- const pin=["p1","p2","p3","p4"].map(id=>document.getElementById(id).value).join("");
- if(pin!=="1234"){
-  document.getElementById("pinError").textContent="Incorrect demo PIN. Try 1234.";
-  return;
- }
- document.getElementById("userName").textContent=currentName;
- show("dashboard");
-}
-
-function logout(){
- currentName="User";
- currentMobile="";
- clearPin();
- show("welcome");
-}
-
-function demo(feature){
- alert(feature+" is a demo feature. Real payments are not enabled.");
-}
-
-["p1","p2","p3","p4"].forEach((id,index,arr)=>{
- const input=document.getElementById(id);
- input.addEventListener("input",()=>{
-  input.value=input.value.replace(/[^0-9]/g,"").slice(0,1);
-  if(input.value && arr[index+1])document.getElementById(arr[index+1]).focus();
- });
- input.addEventListener("keydown",e=>{
-  if(e.key==="Backspace"&&!input.value&&arr[index-1])document.getElementById(arr[index-1]).focus();
- });
-});
-
-if("serviceWorker" in navigator){
- window.addEventListener("load",()=>{
-  navigator.serviceWorker.register("./sw.js").catch(()=>{});
- });
-}
+const name=localStorage.getItem("kiruuName")||"KIRUU PAY USER";
+document.getElementById("username").textContent=name;
 </script>
 </body>
 </html>
