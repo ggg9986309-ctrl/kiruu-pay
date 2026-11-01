@@ -1,0 +1,17 @@
+
+{
+  "name": "kiruu-pay",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KIRUU PAY Android application",
+  "scripts": {
+    "build": "mkdir -p www && cp index.html manifest.json sw.js www/ && if [ -f icon-192.png ]; then cp icon-192.png www/; fi && if [ -f icon-512.png ]; then cp icon-512.png www/; fi"
+  },
+  "dependencies": {
+    "@capacitor/core": "^7.4.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/android": "^7.4.3"
+  }
+}
