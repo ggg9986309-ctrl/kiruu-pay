@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KIRUU PAY - Settings</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;padding:20px;min-height:100vh;
+ background:linear-gradient(145deg,#090613,#1b1035);
+ color:white;font-family:Arial,sans-serif
+}
+.container{max-width:430px;margin:auto}
+.header{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:23px;font-weight:bold;color:#c9a5ff}
+a{color:#c9a5ff;text-decoration:none}
+h2{margin-top:35px}
+.sub{color:#a99bbd;font-size:13px}
+.card{
+ background:#1b142b;border:1px solid #49336b;
+ border-radius:17px;padding:18px;margin-top:20px
+}
+.item{
+ display:flex;justify-content:space-between;
+ align-items:center;padding:16px 0;
+ border-bottom:1px solid #382b4d
+}
+.item:last-child{border:0}
+.label{font-weight:bold;font-size:14px}
+.desc{font-size:11px;color:#a99bbd;margin-top:5px}
+button{
+ background:#8b35dc;border:0;border-radius:10px;
+ padding:10px 14px;color:white;font-weight:bold
+}
+select{
+ background:#2b203c;color:white;
+ border:1px solid #594477;padding:9px;border-radius:9px
+}
+.note{
+ margin-top:20px;padding:14px;border-radius:12px;
+ background:#2b203c;color:#c9b8df;
+ font-size:11px;line-height:1.6
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+ <div class="header">
+  <div class="logo">👑 KIRUU PAY</div>
+  <a href="index.html">← Home</a>
+ </div>
+
+ <h2>Settings</h2>
+ <div class="sub">Manage your app preferences</div>
+
+ <div class="card">
+
+  <div class="item">
+   <div>
+    <div class="label">App Theme</div>
+    <div class="desc">Choose your preferred theme</div>
+   </div>
+   <select id="theme" onchange="changeTheme()">
+    <option value="dark">Dark</option>
+    <option value="light">Light</option>
+   </select>
+  </div>
+
+  <div class="item">
+   <div>
+    <div class="label">Notifications</div>
+    <div class="desc">Demo notification preference</div>
+   </div>
+   <input type="checkbox" id="notify">
+  </div>
+
+  <div class="item">
+   <div>
+    <div class="label">App Version</div>
+    <div class="desc">KIRUU PAY v1.0.0</div>
+   </div>
+  </div>
+
+ </div>
+
+ <div class="note">
+  DEMO SETTINGS ONLY<br>
+  These preferences do not control bank security, payment notifications or real financial services.
+ </div>
+
+</div>
+
+<script>
+const themeSelect=document.getElementById("theme");
+const saved=localStorage.getItem("kiruuTheme")||"dark";
+themeSelect.value=saved;
+
+function changeTheme(){
+ const value=themeSelect.value;
+ localStorage.setItem("kiruuTheme",value);
+
+ if(value==="light"){
+  document.body.style.background="#eee8f8";
+  document.body.style.color="#21152e";
+ }else{
+  document.body.style.background=
+   "linear-gradient(145deg,#090613,#1b1035)";
+  document.body.style.color="white";
+ }
+}
+
+document.getElementById("notify").checked=
+ localStorage.getItem("kiruuNotify")==="true";
+
+document.getElementById("notify").addEventListener("change",function(){
+ localStorage.setItem("kiruuNotify",String(this.checked));
+});
+
+changeTheme();
+</script>
+</div>
+</body>
+</html>
