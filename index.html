@@ -1,112 +1,117 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d1b">
 <title>KIRUU PAY</title>
 <style>
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 body{
- margin:0;padding:20px;min-height:100vh;
- background:linear-gradient(145deg,#090613,#1b1035);
- color:white;font-family:Arial,sans-serif
+  font-family:Arial,sans-serif;
+  background:#090d1b;
+  color:#fff;
+  min-height:100vh;
 }
-.container{max-width:450px;margin:auto}
-.header{display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:25px;font-weight:bold;color:#c9a5ff}
-.profile-link{color:#d5b8ff;text-decoration:none}
-.welcome{margin-top:35px}
-.muted{color:#aa9bbd;font-size:13px}
+header{
+  padding:25px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{font-size:25px;font-weight:900;letter-spacing:1px}
+.logo span{color:#8b7cff}
+.profile{
+  width:42px;height:42px;border-radius:50%;
+  background:#252b48;display:grid;place-items:center;
+}
+main{padding:15px 20px;max-width:600px;margin:auto}
+.welcome{color:#aab1ca;font-size:14px}
+h1{font-size:27px;margin:9px 0 24px}
 .balance{
- margin-top:20px;padding:24px;border-radius:20px;
- background:linear-gradient(135deg,#7126bd,#3d1976);
- box-shadow:0 12px 35px #0007
+  background:linear-gradient(135deg,#5144c9,#171d45);
+  border:1px solid #7770df;border-radius:22px;
+  padding:25px;margin-bottom:25px;
 }
-.balance small{color:#e2d0fa}
-.amount{font-size:34px;font-weight:bold;margin-top:10px}
-.badge{font-size:10px;margin-top:10px;color:#f0dfff}
-h3{margin-top:30px}
-.grid{
- display:grid;grid-template-columns:repeat(2,1fr);gap:13px
+.balance small{color:#ddd8ff}
+.amount{font-size:35px;font-weight:800;margin:12px 0}
+.status{font-size:12px;color:#ffe4a1}
+.section-title{font-size:18px;margin:25px 0 15px}
+.actions{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.action{
+  background:#151c32;border:1px solid #28314e;
+  border-radius:17px;padding:22px 12px;
+  text-align:center;
 }
-.tile{
- display:block;text-align:center;padding:20px 10px;
- background:#1b142b;border:1px solid #49336b;
- border-radius:16px;color:white;text-decoration:none
+.action .symbol{font-size:27px;margin-bottom:10px}
+.action p{font-weight:700}
+.action small{display:block;color:#9ca6c4;margin-top:6px}
+.notice{
+  background:#171d30;border:1px solid #39405c;
+  border-radius:14px;padding:16px;margin-top:25px;
+  color:#bdc5df;font-size:13px;line-height:1.6;
 }
-.tile .emoji{font-size:27px}
-.tile div:last-child{font-size:13px;margin-top:10px}
-.list{
- display:block;margin-top:12px;padding:17px;
- background:#1b142b;border:1px solid #49336b;
- border-radius:13px;color:white;text-decoration:none
+nav{
+  position:fixed;bottom:0;left:0;right:0;
+  background:#11182a;border-top:1px solid #29314b;
+  display:flex;justify-content:space-around;padding:16px 5px;
 }
-.note{
- margin-top:22px;padding:13px;border-radius:12px;
- background:#2b203c;color:#c9b8df;
- font-size:11px;line-height:1.6;text-align:center
-}
+nav span{font-size:12px;color:#aab2ca}
+nav span:first-child{color:#a99cff}
 </style>
 </head>
 <body>
-<div class="container">
+<header>
+  <div class="logo">KIRUU <span>PAY</span></div>
+  <div class="profile">👤</div>
+</header>
 
- <div class="header">
-  <div class="logo">👑 KIRUU PAY</div>
-  <a class="profile-link" href="profile.html">My Profile ↗</a>
- </div>
+<main>
+  <p class="welcome">Welcome to KIRUU PAY</p>
+  <h1>Payments, made simple.</h1>
 
- <div class="welcome">
-  <div class="muted">WELCOME BACK</div>
-  <h2 id="username">KIRUU PAY USER</h2>
- </div>
+  <section class="balance">
+    <small>PAYMENT ACCOUNT</small>
+    <div class="amount">₹ —</div>
+    <div class="status">Payment account not connected</div>
+  </section>
 
- <div class="balance">
-  <small>Demo Wallet Balance</small>
-  <div class="amount">₹10,000.00</div>
-  <div class="badge">DEMO BALANCE • NOT REAL MONEY</div>
- </div>
+  <h2 class="section-title">Payment Services</h2>
+  <div class="actions">
+    <div class="action">
+      <div class="symbol">📲</div>
+      <p>Scan QR</p>
+      <small>Coming soon</small>
+    </div>
+    <div class="action">
+      <div class="symbol">💳</div>
+      <p>Accept Payment</p>
+      <small>Coming soon</small>
+    </div>
+    <div class="action">
+      <div class="symbol">📊</div>
+      <p>Transactions</p>
+      <small>Payment records</small>
+    </div>
+    <div class="action">
+      <div class="symbol">⚙️</div>
+      <p>Settings</p>
+      <small>Account settings</small>
+    </div>
+  </div>
 
- <h3>Quick Actions</h3>
+  <div class="notice">
+    <strong>Secure payment platform</strong><br>
+    KIRUU PAY is under development. No real payments are enabled until the payment provider and merchant account are approved and connected.
+  </div>
+</main>
 
- <div class="grid">
-  <a class="tile" href="qr.html">
-   <div class="emoji">▦</div>
-   <div>Scan QR</div>
-  </a>
-
-  <a class="tile" href="history.html">
-   <div class="emoji">↔</div>
-   <div>History</div>
-  </a>
-
-  <a class="tile" href="profile.html">
-   <div class="emoji">👤</div>
-   <div>Profile</div>
-  </a>
-
-  <a class="tile" href="settings.html">
-   <div class="emoji">⚙️</div>
-   <div>Settings</div>
-  </a>
- </div>
-
- <h3>More</h3>
- <a class="list" href="history.html">Transaction History →</a>
- <a class="list" href="settings.html">App Settings →</a>
- <a class="list" href="profile.html">My Account →</a>
-
- <div class="note">
-  KIRUU PAY — DEMO APPLICATION<br>
-  Wallet balance and activity are sample data only.
-  No real UPI or bank transactions are performed.
- </div>
-
-</div>
-
-<script>
-const name=localStorage.getItem("kiruuName")||"KIRUU PAY USER";
-document.getElementById("username").textContent=name;
-</script>
+<nav>
+  <span>⌂ Home</span>
+  <span>▦ Payments</span>
+  <span>◷ History</span>
+  <span>⚙ Settings</span>
+</nav>
 </body>
 </html>
