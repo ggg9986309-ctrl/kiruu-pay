@@ -3,29 +3,32 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#100c20">
+<meta name="description" content="KIRUU PAY payment app">
+<link rel="manifest" href="./manifest.json">
 <title>KIRUU PAY</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#100c20;color:#fff;font-family:Arial,sans-serif;padding-bottom:85px}
-header{padding:25px 20px 15px;display:flex;justify-content:space-between;align-items:center}
+body{background:#100c20;color:white;font-family:Arial,sans-serif;padding-bottom:90px}
+header{padding:25px 20px;display:flex;justify-content:space-between;align-items:center}
 .logo{font-size:25px;font-weight:900;letter-spacing:1px}
 .logo span{color:#a78bfa}
-.profile{width:42px;height:42px;border-radius:50%;background:#30234e;display:grid;place-items:center;font-size:20px}
+.profile{width:43px;height:43px;border-radius:50%;background:#30234e;display:grid;place-items:center;font-size:21px}
 main{padding:10px 18px}
-.balance{background:linear-gradient(135deg,#6d35cf,#38206c);padding:25px;border-radius:24px;box-shadow:0 12px 35px #0005}
+.balance{background:linear-gradient(135deg,#7541d5,#38206c);padding:25px;border-radius:24px;box-shadow:0 12px 35px #0005}
 .small{font-size:13px;color:#ddd}
 .amount{font-size:34px;font-weight:800;margin:12px 0}
-.balance button{background:#ffffff22;border:1px solid #ffffff55;color:white;padding:9px 15px;border-radius:20px}
-.section{margin-top:27px}
+button{cursor:pointer}
+.balance button{background:#ffffff22;border:1px solid #ffffff55;color:white;padding:10px 16px;border-radius:20px}
+.section{margin-top:28px}
 h3{font-size:18px;margin-bottom:17px}
 .actions{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.action{text-align:center;font-size:12px;color:#ddd}
+.action{text-align:center;font-size:12px;color:#ddd;cursor:pointer}
 .circle{width:58px;height:58px;border-radius:20px;background:#251b3a;margin:0 auto 9px;display:grid;place-items:center;font-size:25px;border:1px solid #49366b}
-.promo{margin-top:25px;background:#211638;border:1px solid #49366b;padding:18px;border-radius:20px}
+.promo{margin-top:25px;background:#211638;border:1px solid #49366b;padding:19px;border-radius:20px}
 .promo strong{font-size:17px}
-.promo p{font-size:12px;color:#bbb;margin-top:7px}
+.promo p{font-size:12px;color:#bbb;margin-top:8px;line-height:1.5}
 .transaction{display:flex;align-items:center;justify-content:space-between;padding:15px 0;border-bottom:1px solid #302641}
 .left{display:flex;align-items:center;gap:12px}
 .txicon{width:43px;height:43px;border-radius:15px;background:#29203d;display:grid;place-items:center;font-size:20px}
@@ -33,10 +36,9 @@ h3{font-size:18px;margin-bottom:17px}
 .txdate{font-size:11px;color:#999;margin-top:5px}
 .green{color:#55e5a0;font-weight:bold}
 .bottom{position:fixed;bottom:0;left:0;width:100%;background:#19132a;border-top:1px solid #352747;display:flex;justify-content:space-around;padding:14px 5px 20px}
-.bottom div{text-align:center;color:#aaa;font-size:11px}
+.bottom div{text-align:center;color:#aaa;font-size:11px;cursor:pointer}
 .bottom b{display:block;font-size:21px;margin-bottom:5px}
 .bottom .active{color:#b99aff}
-button{cursor:pointer}
 </style>
 </head>
 <body>
@@ -44,14 +46,12 @@ button{cursor:pointer}
  <div class="logo">KIRUU <span>PAY</span></div>
  <div class="profile">👤</div>
 </header>
-
 <main>
  <section class="balance">
-  <div class="small">AVAILABLE BALANCE</div>
+  <div class="small">DEMO BALANCE</div>
   <div class="amount" id="balance">₹10,000.00</div>
   <button onclick="toggleBalance()">👁 Hide / Show</button>
  </section>
-
  <section class="section">
   <h3>Money Transfers</h3>
   <div class="actions">
@@ -61,7 +61,6 @@ button{cursor:pointer}
    <div class="action" onclick="demo('Self Transfer')"><div class="circle">↔️</div>Self Transfer</div>
   </div>
  </section>
-
  <section class="section">
   <h3>Recharge & Bills</h3>
   <div class="actions">
@@ -71,45 +70,43 @@ button{cursor:pointer}
    <div class="action" onclick="demo('More Services')"><div class="circle">＋</div>More</div>
   </div>
  </section>
-
  <section class="promo">
   <strong>✨ Welcome to KIRUU PAY</strong>
   <p>Your payments, your way. A new payment experience is coming.</p>
  </section>
-
  <section class="section">
   <h3>Recent Transactions</h3>
   <div class="transaction">
-   <div class="left"><div class="txicon">☕</div><div><div class="txname">Coffee Shop</div><div class="txdate">Today · Demo</div></div></div>
+   <div class="left"><div class="txicon">☕</div><div><div class="txname">Coffee Shop</div><div class="txdate">Demo transaction</div></div></div>
    <div class="green">− ₹120</div>
   </div>
   <div class="transaction">
-   <div class="left"><div class="txicon">💰</div><div><div class="txname">Money Received</div><div class="txdate">Yesterday · Demo</div></div></div>
+   <div class="left"><div class="txicon">💰</div><div><div class="txname">Money Received</div><div class="txdate">Demo transaction</div></div></div>
    <div class="green">+ ₹500</div>
-  </div>
-  <div class="transaction">
-   <div class="left"><div class="txicon">📱</div><div><div class="txname">Mobile Recharge</div><div class="txdate">Yesterday · Demo</div></div></div>
-   <div class="green">− ₹199</div>
   </div>
  </section>
 </main>
-
 <nav class="bottom">
  <div class="active"><b>⌂</b>Home</div>
  <div onclick="demo('History')"><b>◷</b>History</div>
  <div onclick="demo('Rewards')"><b>🎁</b>Rewards</div>
  <div onclick="demo('Profile')"><b>☻</b>Profile</div>
 </nav>
-
 <script>
 let visible=true;
 function toggleBalance(){
  visible=!visible;
- document.getElementById("balance").textContent=
- visible?"₹10,000.00":"₹••••••";
+ document.getElementById("balance").textContent=visible?"₹10,000.00":"₹••••••";
 }
 function demo(name){
  alert(name+" is a demo feature. Real payments are not enabled.");
+}
+if("serviceWorker" in navigator){
+ window.addEventListener("load",()=>{
+  navigator.serviceWorker.register("./sw.js").catch(error=>{
+   console.log("Service worker registration failed",error);
+  });
+ });
 }
 </script>
 </body>
