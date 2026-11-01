@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100c20">
+<title>KIRUU PAY - Payment</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#100c20;color:white;font-family:Arial;padding:22px}
+header{display:flex;align-items:center;gap:15px;margin:15px 0 35px}
+.logo{font-size:23px;font-weight:900}
+.logo span{color:#a78bfa}
+button{cursor:pointer}
+.back{background:#29203d;color:white;border:1px solid #49366b;padding:12px 17px;border-radius:12px}
+h1{font-size:27px}
+.sub{color:#aaa;font-size:14px;line-height:1.6}
+.card{background:#211832;border:1px solid #49366b;padding:22px;border-radius:22px;margin-top:25px}
+.label{font-size:12px;color:#b99aff;margin-bottom:10px}
+input{width:100%;background:#100c20;border:1px solid #49366b;padding:17px;border-radius:13px;color:white;font-size:18px;outline:none}
+.amount{font-size:35px;font-weight:bold;margin:20px 0}
+.primary{width:100%;padding:17px;background:linear-gradient(100deg,#8648ee,#5927bd);border:0;border-radius:13px;color:white;font-weight:bold;margin-top:20px}
+.note{text-align:center;color:#999;font-size:11px;line-height:1.6;margin-top:25px}
+.status{display:none;margin-top:20px;padding:18px;background:#173c31;border-radius:15px;color:#80edb8}
+</style>
+</head>
+<body>
+
+<header>
+<button class="back" onclick="location.href='qr.html'">← Back</button>
+<div class="logo">KIRUU <span>PAY</span></div>
+</header>
+
+<h1>Payment Details</h1>
+<p class="sub">Review the demo payment information.</p>
+
+<div class="card">
+ <div class="label">RECIPIENT / UPI DETAILS</div>
+ <div id="recipient">Demo Recipient</div>
+
+ <div class="label" style="margin-top:25px">ENTER AMOUNT (₹)</div>
+ <input id="amount" type="number" min="1" max="100000" placeholder="₹ 0.00">
+
+ <button class="primary" onclick="confirmPayment()">Continue</button>
+</div>
+
+<div class="status" id="status">
+ <h3>✓ Demo Payment Prepared</h3>
+ <p id="statusText"></p>
+ <p>No money has been transferred.</p>
+</div>
+
+<p class="note">
+KIRUU PAY DEMO MODE<br>
+This screen does not make real payments.<br>
+Never enter your bank PIN or OTP here.
+</p>
+
+<script>
+const params=new URLSearchParams(location.search);
+const raw=params.get("upi")||"";
+let recipient="Demo Recipient";
+
+try{
+ const url=new URL(raw);
+ if(url.protocol==="upi:"){
+  recipient=url.searchParams.get("pn")||
+            url.searchParams.get("pa")||
+            "UPI Recipient";
+ }
+}catch(e){}
+
+document.getElementById("recipient").textContent=recipient;
+
+function confirmPayment(){
+ const amount=Number(document.getElementById("amount").value);
+ if(!Number.isFinite(amount)||amount<=0||amount>100000){
+  alert("Enter a valid demo amount between ₹1 and ₹1,00,000.");
+  return;
+ }
+ document.getElementById("statusText").textContent=
+ "Demo amount: ₹"+amount.toFixed(2)+" | Recipient: "+recipient;
+ document.getElementById("status").style.display="block";
+}
+</script>
+</body>
+</html>
