@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KIRUU PAY - Profile</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;padding:20px;
+ min-height:100vh;
+ background:linear-gradient(145deg,#090613,#1b1035);
+ color:white;font-family:Arial,sans-serif
+}
+.container{max-width:430px;margin:auto}
+.header{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:23px;font-weight:bold;color:#c9a5ff}
+a{color:#c9a5ff;text-decoration:none}
+.profile{
+ margin-top:35px;text-align:center;
+ background:#1b142b;border:1px solid #49336b;
+ border-radius:20px;padding:25px
+}
+.avatar{
+ width:85px;height:85px;border-radius:50%;
+ display:grid;place-items:center;margin:auto;
+ background:linear-gradient(135deg,#a855f7,#5b21b6);
+ font-size:35px;font-weight:bold
+}
+h2{margin-bottom:7px}
+.muted{color:#aa9bbd;font-size:13px}
+.section{margin-top:25px}
+.option{
+ display:block;background:#1b142b;
+ border:1px solid #49336b;border-radius:13px;
+ padding:17px;margin-top:11px;color:white;
+ text-decoration:none
+}
+.option span{float:right;color:#bfa0e8}
+button{
+ width:100%;padding:15px;margin-top:22px;
+ background:#8b35dc;color:white;border:0;
+ border-radius:13px;font-size:15px;font-weight:bold
+}
+.note{
+ margin-top:20px;text-align:center;
+ color:#b9a9cf;font-size:11px;line-height:1.6
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+ <div class="header">
+  <div class="logo">👑 KIRUU PAY</div>
+  <a href="index.html">← Home</a>
+ </div>
+
+ <div class="profile">
+  <div class="avatar" id="avatar">K</div>
+  <h2 id="username">KIRUU PAY USER</h2>
+  <div class="muted" id="mobile">Mobile number not available</div>
+  <p class="muted">KIRUU PAY DEMO ACCOUNT</p>
+ </div>
+
+ <div class="section">
+  <div class="muted">ACCOUNT SETTINGS</div>
+
+  <a class="option" href="history.html">
+   Transaction History <span>›</span>
+  </a>
+
+  <a class="option" href="index.html">
+   Home Dashboard <span>›</span>
+  </a>
+
+  <a class="option" href="qr.html">
+   QR Scanner <span>›</span>
+  </a>
+ </div>
+
+ <button onclick="logout()">LOG OUT</button>
+
+ <div class="note">
+  DEMO ACCOUNT ONLY<br>
+  No real bank account or payment credentials are stored here.
+ </div>
+
+</div>
+
+<script>
+const name=localStorage.getItem("kiruuName")||"KIRUU PAY USER";
+const mobile=localStorage.getItem("kiruuMobile")||"Mobile number not available";
+
+document.getElementById("username").textContent=name;
+document.getElementById("mobile").textContent=mobile;
+document.getElementById("avatar").textContent=
+ name.charAt(0).toUpperCase();
+
+function logout(){
+ if(confirm("Are you sure you want to log out?")){
+  localStorage.removeItem("kiruuName");
+  localStorage.removeItem("kiruuMobile");
+  location.href="index.html";
+ }
+}
+</script>
+</body>
+</html>
