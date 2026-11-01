@@ -1,0 +1,54 @@
+
+:root {
+  --bg: #090d1b;
+  --card: #151c32;
+  --primary: #8174ff;
+  --text: #ffffff;
+  --muted: #aab2ca;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  width: min(100% - 32px, 600px);
+  margin: auto;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #29314b;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.primary-button {
+  background: var(--primary);
+  color: white;
+  border: 0;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.muted {
+  color: var(--muted);
+}
