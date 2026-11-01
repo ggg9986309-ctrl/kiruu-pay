@@ -19,10 +19,7 @@ h1{font-size:27px}
 .sub{color:#aaa;font-size:14px;line-height:1.6}
 .scanner{margin-top:25px;background:#211832;border:1px solid #49366b;border-radius:23px;padding:18px}
 #reader{width:100%;overflow:hidden;border-radius:15px}
-#reader video{border-radius:15px}
-#reader img{max-width:100%}
-#reader button{background:#7541d5;color:white;border:0;padding:10px;border-radius:10px}
-#reader select{background:#100c20;color:white;padding:8px;border-radius:8px}
+#reader video{width:100%;border-radius:15px}
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
 .action{padding:17px 8px;border-radius:14px;background:#29203d;color:white;border:1px solid #49366b;font-weight:bold}
 .result{display:none;margin-top:22px;padding:20px;background:#211832;border:1px solid #49366b;border-radius:18px;overflow-wrap:anywhere}
@@ -31,36 +28,30 @@ h1{font-size:27px}
 </style>
 </head>
 <body>
-
 <header>
 <button class="back" onclick="location.href='index.html'">← Back</button>
 <div class="logo">KIRUU <span>PAY</span></div>
 </header>
 
 <h1>Scan any QR code</h1>
-<p class="sub">Place the QR code inside the camera frame to read its details.</p>
+<p class="sub">Place a QR code inside the camera frame.</p>
 
-<div class="scanner">
- <div id="reader"></div>
-</div>
+<div class="scanner"><div id="reader"></div></div>
 
 <div class="actions">
- <button class="action" onclick="startCamera()">📷 Start Camera</button>
- <button class="action" onclick="document.getElementById('qrfile').click()">🖼️ Gallery Upload</button>
+<button class="action" onclick="startCamera()">📷 Start Camera</button>
+<button class="action" onclick="document.getElementById('qrfile').click()">🖼️ Gallery Upload</button>
 </div>
 
 <input id="qrfile" type="file" accept="image/*" hidden>
 
 <div class="result" id="result">
- <h3>QR Details Found ✓</h3>
- <p id="qrtext"></p>
- <button class="primary" onclick="demoPayment()">Continue to Demo Payment</button>
+<h3>QR Details Found ✓</h3>
+<p id="qrtext"></p>
+<button class="primary" onclick="continuePayment()">Continue to Payment Details</button>
 </div>
 
-<p class="note">
-KIRUU PAY DEMO SCANNER<br>
-No money will be transferred. Never share your UPI PIN or OTP.
-</p>
+<p class="note">DEMO MODE · No real money transfer · Verify QR details before continuing.</p>
 
 <script>
 let scanner;
@@ -74,22 +65,22 @@ function showResult(value){
 
 async function startCamera(){
  if(!window.Html5Qrcode){
-  alert("Scanner library could not load. Check your internet.");
+  alert("Scanner library could not load. Check internet.");
   return;
  }
  try{
-  if(!scanner) scanner=new Html5Qrcode("reader");
+  if(!scanner)scanner=new Html5Qrcode("reader");
   await scanner.start(
    {facingMode:"environment"},
    {fps:10,qrbox:{width:230,height:230}},
-   text=>{
+   value=>{
     scanner.stop().catch(()=>{});
-    showResult(text);
+    showResult(value);
    },
    ()=>{}
   );
  }catch(error){
-  alert("Camera could not start. Allow camera permission and use HTTPS.");
+  alert("Camera permission required. Open this page using HTTPS.");
  }
 }
 
@@ -101,13 +92,17 @@ document.getElementById("qrfile").addEventListener("change",async e=>{
   const value=await scanner.scanFile(file,true);
   showResult(value);
  }catch(error){
-  alert("QR code not found in this image.");
+  alert("QR code not found.");
  }
  e.target.value="";
 });
 
-function demoPayment(){
- alert("Demo only! QR details were read, but no payment was made.");
+function continuePayment(){
+ if(!currentQR.startsWith("upi://pay?")){
+  alert("This demo supports UPI payment QR codes only.");
+  return;
+ }
+ location.href="payment.html?upi="+encodeURIComponent(currentQR);
 }
 </script>
 </body>
