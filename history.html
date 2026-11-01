@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KIRUU PAY - History</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;padding:20px;
+ background:linear-gradient(145deg,#090613,#1b1035);
+ color:white;font-family:Arial,sans-serif
+}
+.container{max-width:450px;margin:auto}
+.header{display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:23px;font-weight:bold;color:#c9a5ff}
+.back{color:#c9a5ff;text-decoration:none}
+h2{margin-top:35px}
+.subtitle{color:#a99bbd;font-size:13px}
+.card{
+ background:#1b142b;border:1px solid #49336b;
+ padding:18px;border-radius:17px;margin-top:20px
+}
+.item{
+ display:flex;justify-content:space-between;
+ align-items:center;padding:17px 0;
+ border-bottom:1px solid #382b4d
+}
+.item:last-child{border:0}
+.left{display:flex;gap:12px;align-items:center}
+.circle{
+ width:42px;height:42px;border-radius:50%;
+ display:grid;place-items:center;background:#35234f;font-size:19px
+}
+.name{font-weight:bold;font-size:14px}
+.date{color:#a99bbd;font-size:11px;margin-top:5px}
+.amount{font-weight:bold;text-align:right}
+.demo{font-size:10px;color:#c9a5ff;margin-top:5px;text-align:right}
+.notice{
+ margin-top:20px;background:#2b203c;padding:14px;
+ border-radius:12px;color:#c9b8df;
+ font-size:11px;text-align:center;line-height:1.5
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+ <div class="header">
+  <div class="logo">👑 KIRUU PAY</div>
+  <a class="back" href="index.html">← Home</a>
+ </div>
+
+ <h2>Transaction History</h2>
+ <div class="subtitle">Your recent demo activity</div>
+
+ <div class="card">
+
+  <div class="item">
+   <div class="left">
+    <div class="circle">↗</div>
+    <div>
+     <div class="name">Demo Payment</div>
+     <div class="date">Sample transaction</div>
+    </div>
+   </div>
+   <div>
+    <div class="amount">- ₹250.00</div>
+    <div class="demo">DEMO ONLY</div>
+   </div>
+  </div>
+
+  <div class="item">
+   <div class="left">
+    <div class="circle">↙</div>
+    <div>
+     <div class="name">Demo Received</div>
+     <div class="date">Sample transaction</div>
+    </div>
+   </div>
+   <div>
+    <div class="amount">+ ₹500.00</div>
+    <div class="demo">DEMO ONLY</div>
+   </div>
+  </div>
+
+  <div class="item">
+   <div class="left">
+    <div class="circle">↗</div>
+    <div>
+     <div class="name">Demo Recharge</div>
+     <div class="date">Sample transaction</div>
+    </div>
+   </div>
+   <div>
+    <div class="amount">- ₹100.00</div>
+    <div class="demo">DEMO ONLY</div>
+   </div>
+  </div>
+
+ </div>
+
+ <div class="notice">
+  DEMO TRANSACTIONS ONLY<br>
+  These are sample entries, not actual bank transactions or payment records.
+ </div>
+
+</div>
+</body>
+</html>
