@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100c20">
+<title>KIRUU PAY</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+ font-family:Arial,sans-serif;
+ background:#100c20;
+ color:white;
+ min-height:100vh;
+ padding-bottom:85px;
+}
+header{
+ padding:24px 20px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+.logo{font-size:25px;font-weight:900;letter-spacing:1px}
+.logo span{color:#a78bfa}
+.profile{
+ width:43px;height:43px;border-radius:50%;
+ background:#7046d9;display:grid;
+ place-items:center;font-weight:bold;
+}
+main{padding:0 18px}
+.welcome{color:#aaa;font-size:14px}
+h2{font-size:23px;margin-top:7px}
+.balance{
+ margin-top:22px;padding:25px;
+ border-radius:23px;
+ background:linear-gradient(135deg,#7546e8,#402080);
+ box-shadow:0 12px 35px #0005;
+}
+.balance small{color:#e2d7ff}
+.amount{font-size:34px;font-weight:800;margin:13px 0}
+.balance button{
+ background:white;color:#5831a8;
+ border:0;padding:11px 18px;
+ border-radius:12px;font-weight:bold;
+}
+.section-title{margin:28px 0 16px;font-size:18px}
+.actions{
+ display:grid;grid-template-columns:repeat(4,1fr);
+ gap:12px;
+}
+.action{
+ background:#201a32;border-radius:18px;
+ padding:17px 5px;text-align:center;
+ border:1px solid #ffffff0d;
+ cursor:pointer;
+}
+.action .emoji{font-size:26px}
+.action p{font-size:11px;margin-top:10px;color:#ddd}
+.action:active{transform:scale(.96)}
+.panel{
+ background:#201a32;padding:19px;
+ border-radius:18px;margin-top:15px;
+}
+.panel p{color:#aaa;font-size:13px;margin-top:7px}
+.transaction{
+ display:flex;justify-content:space-between;
+ align-items:center;padding:16px 0;
+ border-bottom:1px solid #ffffff12;
+}
+.transaction:last-child{border:0}
+.transaction small{color:#aaa}
+.green{color:#50df9a}
+nav{
+ position:fixed;bottom:0;left:0;right:0;
+ background:#1b152a;border-top:1px solid #ffffff18;
+ display:flex;justify-content:space-around;
+ padding:15px 5px;
+}
+nav a{color:#aaa;text-decoration:none;font-size:12px}
+nav a.active{color:#b89aff}
+#message{
+ display:none;position:fixed;bottom:90px;
+ left:10%;width:80%;padding:15px;
+ background:#7046d9;border-radius:13px;
+ text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">KIRUU <span>PAY</span></div>
+ <div class="profile">K</div>
+</header>
+
+<main>
+ <p class="welcome">Welcome back,</p>
+ <h2>Welcome to KIRUU PAY 👋</h2>
+
+ <div class="balance">
+  <small>Demo Wallet Balance</small>
+  <div class="amount">₹ 10,000.00</div>
+  <button onclick="showMessage('Demo wallet balance')">
+   View Balance
+  </button>
+ </div>
+
+ <h3 class="section-title">Money Transfer</h3>
+
+ <div class="actions">
+  <div class="action" onclick="showMessage('Send Money - Demo')">
+   <div class="emoji">💸</div>
+   <p>Send Money</p>
+  </div>
+
+  <div class="action" onclick="showMessage('Receive Money - Demo')">
+   <div class="emoji">📥</div>
+   <p>Receive</p>
+  </div>
+
+  <div class="action" onclick="showMessage('QR Scanner Demo')">
+   <div class="emoji">📷</div>
+   <p>Scan QR</p>
+  </div>
+
+  <div class="action" onclick="showMessage('Bank account integration coming soon')">
+   <div class="emoji">🏦</div>
+   <p>Bank</p>
+  </div>
+ </div>
+
+ <h3 class="section-title">Quick Services</h3>
+
+ <div class="actions">
+  <div class="action" onclick="showMessage('Mobile Recharge Demo')">
+   <div class="emoji">📱</div><p>Recharge</p>
+  </div>
+  <div class="action" onclick="showMessage('Bills Demo')">
+   <div class="emoji">💡</div><p>Electricity</p>
+  </div>
+  <div class="action" onclick="showMessage('History Demo')">
+   <div class="emoji">📊</div><p>History</p>
+  </div>
+  <div class="action" onclick="showMessage('Profile Demo')">
+   <div class="emoji">👤</div><p>Profile</p>
+  </div>
+ </div>
+
+ <h3 class="section-title">Recent Transactions</h3>
+
+ <div class="panel">
+  <div class="transaction">
+   <div>🛍️ Shopping<br><small>Demo transaction</small></div>
+   <strong class="green">+ ₹500</strong>
+  </div>
+  <div class="transaction">
+   <div>☕ Food<br><small>Demo transaction</small></div>
+   <strong>- ₹150</strong>
+  </div>
+  <div class="transaction">
+   <div>💰 Cashback<br><small>Demo transaction</small></div>
+   <strong class="green">+ ₹50</strong>
+  </div>
+ </div>
+
+ <div class="panel">
+  <h3>KIRUU PAY SECURITY 🔐</h3>
+  <p>Your payment experience starts here. Real payment services require authorized integration.</p>
+ </div>
+</main>
+
+<div id="message"></div>
+
+<nav>
+ <a class="active" href="#">⌂<br>Home</a>
+ <a href="#" onclick="showMessage('Payments Demo')">⇄<br>Pay</a>
+ <a href="#" onclick="showMessage('History Demo')">▤<br>History</a>
+ <a href="#" onclick="showMessage('Profile Demo')">♙<br>Profile</a>
+</nav>
+
+<script>
+function showMessage(text){
+ const box=document.getElementById('message');
+ box.textContent=text;
+ box.style.display='block';
+ setTimeout(()=>box.style.display='none',2500);
+}
+</script>
+
+</body>
+</html>
