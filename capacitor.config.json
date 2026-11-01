@@ -1,0 +1,11 @@
+
+{
+  "appId": "com.kiruu.pay",
+  "appName": "KIRUU PAY",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "backgroundColor": "#100c20",
+  "server": {
+    "androidScheme": "https"
+  }
+}
